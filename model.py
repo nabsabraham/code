@@ -9,6 +9,7 @@ class OutOfStock(Exception):
 
 
 def allocate(line: OrderLine, batches: List[Batch]) -> str:
+    # this is the domain service that ties the batches to the order line
     try:
         batch = next(b for b in sorted(batches) if b.can_allocate(line))
         batch.allocate(line)
